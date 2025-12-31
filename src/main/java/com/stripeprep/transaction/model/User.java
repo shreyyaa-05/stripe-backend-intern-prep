@@ -1,9 +1,17 @@
 package com.stripeprep.transaction.model;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public class User {
 
     private Long id;
+
+    @NotBlank(message = "Name must not be blank")
     private String name;
+
+    @NotBlank(message = "Email must not be blank")
+    @Email(message = "Email must be a valid email address")
     private String email;
 
     public User() {
