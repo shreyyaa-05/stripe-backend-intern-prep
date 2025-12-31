@@ -9,6 +9,7 @@ import java.util.List;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import com.stripeprep.transaction.exception.UserNotFoundException;
 
 
 @RestController
@@ -42,7 +43,8 @@ public class UserController {
                 .stream()
                 .filter(user -> user.getId().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new UserNotFoundException(id));
     }
+
 
 }
